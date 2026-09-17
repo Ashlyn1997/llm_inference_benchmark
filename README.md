@@ -45,12 +45,11 @@ export VLLM_API_KEY=optional-token
 
 ```text
 results/
-├── summary.json                 # 所有并发度的汇总
 ├── concurrency_8/
-    ├── request_results.csv      # 每次请求一行
-    ├── request_results.json
-    └── summary.json
-│   └── gpu_metrics.csv          # nvidia-smi 每秒采样
+│   ├── request_results.csv      # 每次请求一行
+│   ├── request_results.json
+│   ├── summary.json
+│   └── gpu_metrics.csv          # nvidia-smi 每 200ms 采样
 └── combined_summary.json        # 跨并发度对比
 ```
 
@@ -66,7 +65,7 @@ TTFT 是从请求开始到第一个非空 generated content 的时间；如果�
 warmup → GPU monitor start → benchmark → GPU monitor stop → summary
 ```
 
-warmup 默认执行 5 个请求，不写入正式结果、不计入正式 wall time，也不写入 GPU CSV。GPU 监控以 1 秒频率调用 `nvidia-smi`；没有该命令或监控失败时会给出 warning，但正式 benchmark 继续执行。GPU summary 默认只统计 `--gpu-index 0` 的样本。
+warmup 默认执行 5 个请求，不写入正式结果、不计入正式 wall time，也不写入 GPU CSV。GPU 监控默认以 200ms 频率调用 `nvidia-smi --loop-ms=200`；可通过 `--gpu-monitor-interval-ms` 调整。没有该命令或监控失败时会给出 warning，但正式 benchmark 继续执行。GPU summary 默认只统计 `--gpu-index 0` 的样本。
 
 ```bash
 python -m llm_benchmark.cli \
@@ -76,6 +75,7 @@ python -m llm_benchmark.cli \
   --requests 50 \
   --max-tokens 128 \
   --warmup-requests 5 \
+  --gpu-monitor-interval-ms 200 \
   --gpu-index 0
 ```
 

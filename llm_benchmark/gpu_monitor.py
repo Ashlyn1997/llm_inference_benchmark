@@ -22,9 +22,11 @@ GPU_METRIC_FIELDS = (
 class GPUMonitor:
     """Continuously record nvidia-smi query output without affecting a benchmark."""
 
-    def __init__(self, output_path: Path, interval_s: float = 1.0):
+    def __init__(self, output_path: Path, interval_ms: int = 200):
+        if interval_ms <= 0:
+            raise ValueError("interval_ms must be greater than zero")
         self.output_path = Path(output_path)
-        self.interval_s = interval_s
+        self.interval_ms = interval_ms
         self.warning: str | None = None
         self._process: subprocess.Popen | None = None
         self._output_file: TextIO | None = None
@@ -42,7 +44,7 @@ class GPUMonitor:
             "nvidia-smi",
             f"--query-gpu={','.join(GPU_METRIC_FIELDS)}",
             "--format=csv,noheader,nounits",
-            f"--loop={self.interval_s:g}",
+            f"--loop-ms={self.interval_ms}",
         ]
         try:
             self._process = subprocess.Popen(

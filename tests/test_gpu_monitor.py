@@ -51,11 +51,24 @@ class GPUMonitorTest(unittest.TestCase):
 
             command = popen.call_args.args[0]
             self.assertIn("nvidia-smi", command)
-            self.assertIn("--loop=1", command)
+            self.assertIn("--loop-ms=200", command)
             self.assertTrue(process.terminated)
             self.assertEqual(process.wait_calls, [5])
             self.assertTrue(output_path.exists())
             self.assertTrue(output_path.read_text(encoding="utf-8").startswith("timestamp,"))
+
+    def test_custom_interval_is_passed_to_nvidia_smi(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output_path = Path(directory) / "gpu_metrics.csv"
+            process = FakeProcess()
+            with patch(
+                "llm_benchmark.gpu_monitor.subprocess.Popen", return_value=process
+            ) as popen:
+                monitor = GPUMonitor(output_path, interval_ms=500)
+                monitor.start()
+                monitor.stop()
+
+            self.assertIn("--loop-ms=500", popen.call_args.args[0])
 
     def test_missing_nvidia_smi_warns_without_raising(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -100,6 +113,17 @@ class GPUMonitorTest(unittest.TestCase):
 
 
 class CLIGPUMonitorTest(unittest.TestCase):
+    def test_gpu_monitor_interval_cli_argument(self):
+        from llm_benchmark import cli
+
+        default_args = cli.build_parser().parse_args(["--model", "test-model"])
+        custom_args = cli.build_parser().parse_args(
+            ["--model", "test-model", "--gpu-monitor-interval-ms", "500"]
+        )
+
+        self.assertEqual(default_args.gpu_monitor_interval_ms, 200)
+        self.assertEqual(custom_args.gpu_monitor_interval_ms, 500)
+
     @staticmethod
     def _args(output_dir: Path) -> Namespace:
         return Namespace(
@@ -116,6 +140,7 @@ class CLIGPUMonitorTest(unittest.TestCase):
             output_dir=output_dir,
             warmup_requests=0,
             gpu_index=0,
+            gpu_monitor_interval_ms=200,
         )
 
     def test_monitor_stops_when_benchmark_raises(self):
@@ -124,8 +149,9 @@ class CLIGPUMonitorTest(unittest.TestCase):
         created_monitors = []
 
         class RecordingMonitor:
-            def __init__(self, output_path):
+            def __init__(self, output_path, interval_ms=200):
                 self.output_path = output_path
+                self.interval_ms = interval_ms
                 self.started = False
                 self.stopped = False
                 created_monitors.append(self)

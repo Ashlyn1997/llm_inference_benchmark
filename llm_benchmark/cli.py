@@ -63,6 +63,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--gpu-index", type=_nonnegative_int, default=0)
     parser.add_argument(
+        "--gpu-monitor-interval-ms",
+        type=_positive_int,
+        default=200,
+        help="nvidia-smi sampling interval in milliseconds",
+    )
+    parser.add_argument(
         "--concurrency",
         type=_concurrencies,
         default=DEFAULT_CONCURRENCIES,
@@ -109,7 +115,10 @@ async def _run(args: argparse.Namespace) -> int:
 
         print(f"Running concurrency={concurrency}, requests={args.requests} ...", flush=True)
         gpu_metrics_path = run_dir / "gpu_metrics.csv"
-        monitor = GPUMonitor(gpu_metrics_path)
+        monitor = GPUMonitor(
+            gpu_metrics_path,
+            interval_ms=args.gpu_monitor_interval_ms,
+        )
         benchmark_started_at = _utc_now()
         monitor.start()
         try:
@@ -128,6 +137,7 @@ async def _run(args: argparse.Namespace) -> int:
                 "max_tokens": args.max_tokens,
                 "temperature": args.temperature,
                 "warmup_requests": args.warmup_requests,
+                "gpu_monitor_interval_ms": args.gpu_monitor_interval_ms,
                 "benchmark_started_at": benchmark_started_at,
                 "benchmark_finished_at": benchmark_finished_at,
                 "gpu": summarize_gpu_metrics(gpu_metrics_path, args.gpu_index),
