@@ -1,0 +1,50 @@
+{
+  "count": 50,
+  "successful_requests": 50,
+  "failed_requests": 0,
+  "concurrency": 1,
+  "wall_time_s": 47.27523277199998,
+  "request_throughput_rps": 1.0576362519702671,
+  "output_token_throughput_tps": 135.3774402521942,
+  "ttft_ms": {
+    "average": 24.20401556,
+    "p50": 23.6837085,
+    "p95": 26.970816249999995,
+    "p99": 32.73178244999998
+  },
+  "tpot_ms": {
+    "average": 7.2537919609448815,
+    "p50": 7.231957015748032,
+    "p95": 8.359567099212597,
+    "p99": 8.406083472913386
+  },
+  "total_latency_ms": {
+    "average": 945.4355946000001,
+    "p50": 942.962734,
+    "p95": 1085.5941106,
+    "p99": 1090.5468059500001
+  },
+  "total_prompt_tokens": 2050,
+  "total_completion_tokens": 6400,
+  "metadata": {
+    "base_url": "http://127.0.0.1:8000",
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "max_tokens": 128,
+    "temperature": 0.0,
+    "warmup_requests": 5,
+    "gpu_monitor_interval_ms": 200,
+    "benchmark_started_at": "2026-09-17T06:23:26.084234Z",
+    "benchmark_finished_at": "2026-09-17T06:24:13.407482Z",
+    "gpu": {
+      "index": 0,
+      "avg_utilization_pct": 98.21363636363637,
+      "max_utilization_pct": 100.0,
+      "avg_memory_used_mib": 10761.0,
+      "max_memory_used_mib": 10761.0,
+      "avg_temperature_c": 79.07727272727273,
+      "max_temperature_c": 82.0,
+      "avg_power_w": 64.89840909090908,
+      "max_power_w": 71.27
+    }
+  }
+}
