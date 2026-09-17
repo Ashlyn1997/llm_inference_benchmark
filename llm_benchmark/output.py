@@ -40,9 +40,28 @@ def write_summary(output_dir: str | Path, summary: MetricSummary) -> Path:
 
 
 def write_combined_summary(output_dir: str | Path, summaries: list[MetricSummary]) -> Path:
-    path = Path(output_dir) / "summary.json"
+    path = Path(output_dir) / "combined_summary.json"
+
+    def comparison_row(summary: MetricSummary) -> dict[str, Any]:
+        gpu = summary.metadata.get("gpu", {})
+        return {
+            "concurrency": summary.concurrency,
+            "request_throughput_rps": summary.request_throughput_rps,
+            "output_token_throughput_tps": summary.output_token_throughput_tps,
+            "ttft_ms": summary.ttft_ms,
+            "tpot_ms": summary.tpot_ms,
+            "total_latency_ms": summary.total_latency_ms,
+            "avg_gpu_utilization_pct": gpu.get("avg_utilization_pct"),
+            "max_gpu_utilization_pct": gpu.get("max_utilization_pct"),
+            "avg_memory_used_mib": gpu.get("avg_memory_used_mib"),
+            "max_memory_used_mib": gpu.get("max_memory_used_mib"),
+            "max_temperature_c": gpu.get("max_temperature_c"),
+            "avg_power_w": gpu.get("avg_power_w"),
+        }
+
     payload: dict[str, Any] = {
         "runs": [summary.to_dict() for summary in summaries],
+        "comparison": [comparison_row(summary) for summary in summaries],
     }
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     return path

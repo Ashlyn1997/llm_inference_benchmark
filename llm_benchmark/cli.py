@@ -4,9 +4,12 @@ import argparse
 import asyncio
 import json
 import os
+from dataclasses import replace
+from datetime import datetime, timezone
 from pathlib import Path
 
 from .client import BenchmarkConfig, run_benchmark
+from .gpu_monitor import GPUMonitor, summarize_gpu_metrics
 from .metrics import summarize
 from .output import write_combined_summary, write_request_results, write_summary
 
@@ -19,6 +22,17 @@ def _positive_int(value: str) -> int:
     if parsed <= 0:
         raise argparse.ArgumentTypeError("must be greater than zero")
     return parsed
+
+
+def _nonnegative_int(value: str) -> int:
+    parsed = int(value)
+    if parsed < 0:
+        raise argparse.ArgumentTypeError("must be zero or greater")
+    return parsed
+
+
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
 def _concurrencies(value: str) -> list[int]:
@@ -42,6 +56,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--requests", type=_positive_int, default=32)
     parser.add_argument(
+        "--warmup-requests",
+        type=_nonnegative_int,
+        default=5,
+        help="requests per concurrency before measurement; use 0 to disable",
+    )
+    parser.add_argument("--gpu-index", type=_nonnegative_int, default=0)
+    parser.add_argument(
         "--concurrency",
         type=_concurrencies,
         default=DEFAULT_CONCURRENCIES,
@@ -56,6 +77,7 @@ async def _run(args: argparse.Namespace) -> int:
     summaries = []
     for concurrency in args.concurrency:
         run_dir = args.output_dir / f"concurrency_{concurrency}"
+        run_dir.mkdir(parents=True, exist_ok=True)
         config = BenchmarkConfig(
             base_url=args.base_url,
             model=args.model,
@@ -68,8 +90,34 @@ async def _run(args: argparse.Namespace) -> int:
             api_key=args.api_key,
             system_prompt=args.system_prompt,
         )
+        if args.warmup_requests:
+            print(
+                f"Warming up concurrency={concurrency}, requests={args.warmup_requests} ...",
+                flush=True,
+            )
+            warmup_results, _ = await run_benchmark(
+                replace(config, requests=args.warmup_requests)
+            )
+            warmup_successes = sum(result.success for result in warmup_results)
+            if warmup_successes != len(warmup_results):
+                print(
+                    f"Warning: warmup concurrency={concurrency} had "
+                    f"{len(warmup_results) - warmup_successes}/{len(warmup_results)} "
+                    "failed requests; continuing with measured benchmark.",
+                    flush=True,
+                )
+
         print(f"Running concurrency={concurrency}, requests={args.requests} ...", flush=True)
-        results, wall_time_s = await run_benchmark(config)
+        gpu_metrics_path = run_dir / "gpu_metrics.csv"
+        monitor = GPUMonitor(gpu_metrics_path)
+        benchmark_started_at = _utc_now()
+        monitor.start()
+        try:
+            results, wall_time_s = await run_benchmark(config)
+        finally:
+            benchmark_finished_at = _utc_now()
+            monitor.stop()
+
         summary = summarize(
             results,
             concurrency=concurrency,
@@ -79,6 +127,10 @@ async def _run(args: argparse.Namespace) -> int:
                 "model": args.model,
                 "max_tokens": args.max_tokens,
                 "temperature": args.temperature,
+                "warmup_requests": args.warmup_requests,
+                "benchmark_started_at": benchmark_started_at,
+                "benchmark_finished_at": benchmark_finished_at,
+                "gpu": summarize_gpu_metrics(gpu_metrics_path, args.gpu_index),
             },
         )
         write_request_results(run_dir, results)

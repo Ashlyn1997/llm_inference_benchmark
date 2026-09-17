@@ -46,12 +46,37 @@ export VLLM_API_KEY=optional-token
 ```text
 results/
 ├── summary.json                 # 所有并发度的汇总
-└── concurrency_8/
+├── concurrency_8/
     ├── request_results.csv      # 每次请求一行
     ├── request_results.json
     └── summary.json
+│   └── gpu_metrics.csv          # nvidia-smi 每秒采样
+└── combined_summary.json        # 跨并发度对比
 ```
 
 TTFT 是从请求开始到第一个非空 generated content 的时间；如果没有收到非空 content，TTFT 为 `null`。TPOT 为 `(total_latency_ms - ttft_ms) / (completion_tokens - 1)`，仅在 vLLM usage 返回 completion token 数且其大于 1 时计算。request throughput 定义为成功请求数除以该并发度 run 的 wall-clock 时间；output token throughput 使用成功请求的 `completion_tokens / wall_time_s`。
 
 请求失败会保留在 request 结果中；如果任一请求失败，CLI 以退出码 `1` 结束，但仍会写出完整结果文件。
+
+## 标准 Benchmark 流程
+
+每个 concurrency 独立按以下顺序执行：
+
+```text
+warmup → GPU monitor start → benchmark → GPU monitor stop → summary
+```
+
+warmup 默认执行 5 个请求，不写入正式结果、不计入正式 wall time，也不写入 GPU CSV。GPU 监控以 1 秒频率调用 `nvidia-smi`；没有该命令或监控失败时会给出 warning，但正式 benchmark 继续执行。GPU summary 默认只统计 `--gpu-index 0` 的样本。
+
+```bash
+python -m llm_benchmark.cli \
+  --base-url http://127.0.0.1:8000 \
+  --model Qwen/Qwen2.5-0.5B-Instruct \
+  --concurrency 1,4,8,16,32 \
+  --requests 50 \
+  --max-tokens 128 \
+  --warmup-requests 5 \
+  --gpu-index 0
+```
+
+使用 `--warmup-requests 0` 可关闭 warmup。
