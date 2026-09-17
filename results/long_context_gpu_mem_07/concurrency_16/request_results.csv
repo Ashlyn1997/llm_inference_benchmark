@@ -1,0 +1,1601 @@
+request_id,concurrency,success,status_code,ttft_ms,total_latency_ms,streamed_chunks,output_text,prompt_tokens,completion_tokens,total_tokens,error,tpot_ms
+1,16,True,200,104.355331,4386.863019,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.794147796078434
+2,16,True,200,78.461259,4366.741241,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.816784243137256
+3,16,True,200,104.009493,4386.337069,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.793441474509805
+4,16,True,200,103.475103,4385.8895,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.79378194901961
+5,16,True,200,160.358984,4446.122925,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.80691741568627
+6,16,True,200,159.296089,4445.73461,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.809562827450982
+7,16,True,200,176.25577,4470.013261,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.838264670588238
+8,16,True,200,102.54539,4386.566602,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.800083184313724
+9,16,True,200,124.168604,4404.27389,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.784726611764707
+10,16,True,200,123.234016,4403.164595,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.78404148627451
+11,16,True,200,123.821628,4403.821982,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.784315113725494
+12,16,True,200,142.184716,4418.764504,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.770901129411765
+13,16,True,200,142.91369,4420.721706,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.77571770980392
+14,16,True,200,142.013455,4418.252895,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.769566431372546
+15,16,True,200,141.900471,4418.030901,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.76913894117647
+16,16,True,200,155.688738,4442.38972,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.81059208627451
+17,16,True,200,54.573374,4382.544652,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.972436384313724
+18,16,True,200,84.044022,4397.407678,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.91515159215686
+19,16,True,200,115.146881,4426.293899,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.906458894117648
+20,16,True,200,115.139496,4427.378087,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.91073957254902
+21,16,True,200,113.06603,4422.640349,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.900291447058823
+22,16,True,200,96.955013,4407.957625,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.90589259607843
+23,16,True,200,117.217324,4421.17224,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.878254572549018
+24,16,True,200,115.456327,4420.507133,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.882552180392157
+25,16,True,200,102.398438,4407.133592,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.881314329411765
+26,16,True,200,100.861393,4405.206784,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.879785847058823
+27,16,True,200,120.262565,4424.98981,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.88128331372549
+28,16,True,200,118.205037,4423.009127,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.88158466666667
+29,16,True,200,95.998087,4399.640041,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.877027270588233
+30,16,True,200,96.180136,4400.95237,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.88145974117647
+31,16,True,200,107.713157,4421.152989,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.915450321568628
+32,16,True,200,85.145209,4398.615524,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,16.915569862745098
+33,16,True,200,62.917778,4432.337831,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.1349806
+34,16,True,200,60.525465,4436.770663,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.161745874509805
+35,16,True,200,82.702437,4445.578302,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.10931711764706
+36,16,True,200,109.552864,4474.443216,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.117217066666665
+37,16,True,200,110.080291,4474.894946,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.116920215686275
+38,16,True,200,108.454745,4473.429972,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.11754990980392
+39,16,True,200,121.493634,4479.164118,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.088903858823528
+40,16,True,200,95.218435,4460.530213,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.11886971764706
+41,16,True,200,120.102665,4478.259813,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.090812345098037
+42,16,True,200,118.537908,4476.688395,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.09078622352941
+43,16,True,200,121.196351,4472.359909,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.063386501960785
+44,16,True,200,118.545084,4470.551019,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.06668994117647
+45,16,True,200,118.730993,4470.158037,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.064419780392157
+46,16,True,200,132.233176,4490.706022,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.092050376470592
+47,16,True,200,113.321935,4471.462709,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.090748133333335
+48,16,True,200,127.658743,4496.232869,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.131663239215687
+49,16,True,200,61.759463,4465.140039,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.268159121568626
+50,16,True,200,65.576043,4460.391243,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.234569411764706
+51,16,True,200,57.547138,4455.361616,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.24633128627451
+52,16,True,200,77.587022,4457.194879,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.17493277254902
+53,16,True,200,106.44107,4471.309472,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.117130988235296
+54,16,True,200,105.817528,4470.738444,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.117336925490196
+55,16,True,200,128.291865,4484.023182,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.08129928235294
+56,16,True,200,112.30045,4467.791141,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.08035565098039
+57,16,True,200,111.050644,4466.679857,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.080898874509806
+58,16,True,200,132.780677,4476.686741,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.034925741176473
+59,16,True,200,122.080272,4465.996166,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.03496429019608
+60,16,True,200,121.437817,4465.22191,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.034447423529414
+61,16,True,200,120.852722,4464.695848,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.034678925490198
+62,16,True,200,114.592494,4452.205282,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.010246227450978
+63,16,True,200,113.752524,4451.488456,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.010729145098036
+64,16,True,200,88.055412,4426.389907,258,"### Long Context Technical Brief: Serving Large Language Models Under KV Cache Pressure
+
+**Objective:** To evaluate the impact of long contexts on the performance of large language models (LLMs) served under a KVA (Kernel-Value-Aware) caching strategy.
+
+---
+
+#### Overview:
+Large language models (LLMs) serve multiple tasks such as answering questions, generating text, and performing complex computations. However, these models often face challenges due to the large amounts of data they process simultaneously. The current benchmark design aims to simulate this scenario by focusing on the computational resources required for long prompts.
+
+---
+
+#### Key Components:
+
+1. **Prefill Phase**: Tokenization and key-value storage are performed at the API boundary.
+2. **KV Cache Management**: Memory is allocated based on the number of active tokens, not just the number of requests.
+3. **Network Traffic**: The benchmark simulates varying prompt lengths and concurrent requests.
+4. **Tokenization and Execution**: Each token attends to the stored context and appends additional KV entries.
+5. **Output Tokens**: The number of output tokens increases with longer prompts.
+
+---
+
+#### Benchmark Design:
+
+1. **Prompt Lengths**: The benchmark tests various prompt lengths ranging from short to long.
+2. **Concurrent Requests**: Multiple requests are sent",1927,256,2183,,17.013076450980392

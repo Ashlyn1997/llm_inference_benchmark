@@ -1,0 +1,2 @@
+[console_scripts]
+llm-benchmark = llm_benchmark.cli:main

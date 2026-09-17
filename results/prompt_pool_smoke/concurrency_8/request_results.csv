@@ -1,0 +1,40 @@
+request_id,concurrency,success,status_code,ttft_ms,total_latency_ms,streamed_chunks,output_text,prompt_tokens,completion_tokens,total_tokens,error,tpot_ms
+1,8,True,200,558.957053,3487.160734,66,"### Dominant Bottleneck and Evidence Needed
+
+#### Dominant Bottleneck
+The primary bottleneck in the CUDA kernel optimization process involves the synchronization point serialization of otherwise independent warp threads. This issue arises due to the inherent nature of CUDA kernels, which require all threads to access the same shared memory region (the ""sync"" region",1862,64,1926,,46.47942350793651
+2,8,True,200,877.005551,3492.912508,66,"Certainly! Let's analyze the dominant bottleneck, the evidence needed to verify it, and the tradeoffs of the proposed operating policy in the context of a fused GPU execution pipeline.
+
+### Dominant Bottleneck
+
+**Bottleneck:** Uncoalesced Global Loads and Occupancy Loss
+
+**Evidence Needed to Verify:**
+
+",1858,64,1922,,41.52233265079365
+3,8,True,200,1203.45922,3502.037881,66,"### Dominant Bottleneck
+
+The primary bottleneck in the CUDA kernel optimization engineering brief is the synchronization point serialization of otherwise independent warp states. This issue arises due to the nature of CUDA kernels, which are inherently sequential and require consistent access patterns between threads. The serialized nature of these kernels makes it challenging to measure their performance accurately",1855,64,1919,,36.48537557142858
+4,8,True,200,1549.227408,3510.815853,66,"### Dominant Bottleneck
+
+One of the primary bottlenecks in the distributed inference system is the latency associated with the processing of long prompts across multiple API replicas. Long prompts often require significant computational resources and time to execute, particularly when dealing with large datasets or complex models. The latency incurred during these processes can significantly impact",1885,64,1949,,31.136324523809524
+5,8,True,200,1903.494888,3519.411124,66,"### Dominant Bottleneck
+
+The dominant bottleneck in the distributed inference system is the allocation of GPU memory, RDMA links, and scheduler slots. Specifically:
+
+1. **GPU Memory**: The system relies heavily on GPU memory for processing tasks like decoding and other computational-intensive operations. Allocating too much GPU memory can lead to",1890,64,1954,,25.64946406349207
+6,8,True,200,2263.036089,3527.552942,66,"### Dominant Bottleneck and Evidence Needed
+
+#### Dominant Bottleneck:
+One of the primary bottlenecks in the distributed inference system is the latency associated with the processing of incoming messages. Specifically, the issue arises due to the fact that the system experiences significant delays when multiple ranks (nodes) are waiting for their turn",1886,64,1950,,20.071696079365072
+7,8,True,200,2627.510636,3534.434327,66,"### Dominant Bottleneck
+
+One of the primary bottlenecks in the distributed inference system is the issue of latency due to cross-node communication on the critical decode path. Specifically, the system experiences significant latency issues when multiple GPUs are accessing shared memory, leading to degraded performance and potential crashes.
+
+### Evidence Needed to Verify the",1883,64,1947,,14.395614142857143
+8,8,True,200,2825.557675,3540.169411,66,"### Dominant Bottleneck and Evidence Needed
+
+#### Dominant Bottleneck:
+The primary bottleneck in the production database architecture is likely the **hot index page** force causing unrelated transactions into a queue. This assumption has been validated through extensive testing and empirical evidence:
+
+1. **Synthetic Test Validation**: The focus on synthetic tests",1921,64,1985,,11.343043428571425

@@ -1,0 +1,119 @@
+Metadata-Version: 2.4
+Name: llm-inference-benchmark
+Version: 0.1.0
+Summary: Async concurrency benchmark client for OpenAI-compatible vLLM services
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: httpx<1,>=0.27
+
+# llm_inference_benchmark
+
+用于远程 OpenAI-compatible vLLM 服务的异步并发性能 benchmark client。本项目只在本地发 HTTP 请求，不需要本地 GPU。
+
+## 特性
+
+- 使用 `httpx.AsyncClient` 并发调用 `/v1/chat/completions`
+- 固定使用 `stream=true`，记录 TTFT、TPOT 和 E2E total latency
+- 支持并发度 `1,4,8,16,32`，也可自定义
+- 输出每次请求的 CSV、JSON，以及每个并发度和全部运行的汇总 JSON
+- 使用 vLLM 返回的 usage 统计 output token throughput；`streamed_chunks` 仅用于调试，不代表 token 数
+
+## 安装
+
+```bash
+cd llm_inference_benchmark
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+```
+
+## 运行
+
+```bash
+python3 -m llm_benchmark.cli \
+  --base-url http://your-vllm-host:8000 \
+  --model your-model-name \
+  --requests 32 \
+  --concurrency 1,4,8,16,32 \
+  --output-dir results/run-001
+```
+
+也可以使用批量脚本：
+
+```bash
+export VLLM_BASE_URL=http://your-vllm-host:8000
+export VLLM_MODEL=your-model-name
+export VLLM_API_KEY=optional-token
+./scripts/run_benchmark.sh --requests 32
+```
+
+通过 `CONCURRENCIES=1,4,8` 和 `OUTPUT_DIR=results/experiment-a` 可覆盖脚本默认值。CLI 的 `--concurrency` 支持逗号分隔值，因此一次命令会按顺序执行多个并发度，每个并发度使用独立目录。
+
+## 输出
+
+```text
+results/
+├── concurrency_8/
+│   ├── request_results.csv      # 每次请求一行
+│   ├── request_results.json
+│   ├── summary.json
+│   └── gpu_metrics.csv          # nvidia-smi 每 200ms 采样
+└── combined_summary.json        # 跨并发度对比
+```
+
+TTFT 是从请求开始到第一个非空 generated content 的时间；如果没有收到非空 content，TTFT 为 `null`。TPOT 为 `(total_latency_ms - ttft_ms) / (completion_tokens - 1)`，仅在 vLLM usage 返回 completion token 数且其大于 1 时计算。request throughput 定义为成功请求数除以该并发度 run 的 wall-clock 时间；output token throughput 使用成功请求的 `completion_tokens / wall_time_s`。
+
+请求失败会保留在 request 结果中；如果任一请求失败，CLI 以退出码 `1` 结束，但仍会写出完整结果文件。
+
+## 标准 Benchmark 流程
+
+每个 concurrency 独立按以下顺序执行：
+
+```text
+warmup → GPU monitor start → benchmark → GPU monitor stop → summary
+```
+
+warmup 默认执行 5 个请求，不写入正式结果、不计入正式 wall time，也不写入 GPU CSV。GPU 监控默认以 200ms 频率调用 `nvidia-smi --loop-ms=200`；可通过 `--gpu-monitor-interval-ms` 调整。没有该命令或监控失败时会给出 warning，但正式 benchmark 继续执行。GPU summary 默认只统计 `--gpu-index 0` 的样本。
+
+```bash
+python -m llm_benchmark.cli \
+  --base-url http://127.0.0.1:8000 \
+  --model Qwen/Qwen2.5-0.5B-Instruct \
+  --concurrency 1,4,8,16,32 \
+  --requests 50 \
+  --max-tokens 128 \
+  --warmup-requests 5 \
+  --gpu-monitor-interval-ms 200 \
+  --gpu-index 0
+```
+
+使用 `--warmup-requests 0` 可关闭 warmup。
+
+## Long Context / KV Cache Pressure Benchmark
+
+项目内置 [long_2k.txt](prompts/long_2k.txt)，是一份约 2k token 的英文 LLM serving 技术文本。长 prompt 会增加 prefill 计算和 KV Cache 占用，适合后续比较不同 KV Cache memory 配置、vLLM 版本或 GPU 配置。
+
+默认 workload 使用 concurrency `8,16,32,64`、每档 `64` 个请求、`max_tokens=256`，并在每档正式压测前执行 5 个 warmup 请求：
+
+```bash
+./scripts/run_long_context_benchmark.sh \
+  --base-url http://127.0.0.1:8000
+```
+
+也可以直接调用 CLI：
+
+```bash
+python3 -m llm_benchmark.cli \
+  --base-url http://127.0.0.1:8000 \
+  --model Qwen/Qwen2.5-0.5B-Instruct \
+  --prompt-file prompts/long_2k.txt \
+  --concurrency 8,16,32,64 \
+  --requests 64 \
+  --max-tokens 256 \
+  --warmup-requests 5 \
+  --gpu-index 0 \
+  --gpu-monitor-interval-ms 200 \
+  --output-dir results/long_context
+```
+
+`--prompt-file` 的内容优先于 `--prompt`，并且所有请求共享同一份文本。每个 run 的 summary metadata 会保存 `prompt_source` 和 `prompt_char_count`；本项目不估算 prompt token 数，避免引入不可靠或额外的 tokenizer 依赖。

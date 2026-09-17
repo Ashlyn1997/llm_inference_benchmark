@@ -1,0 +1,92 @@
+{
+  "runs": [
+    {
+      "count": 64,
+      "successful_requests": 64,
+      "failed_requests": 0,
+      "concurrency": 32,
+      "wall_time_s": 36.50119266500042,
+      "request_throughput_rps": 1.7533673649345471,
+      "output_token_throughput_tps": 448.86204542324407,
+      "ttft_ms": {
+        "average": 3552.531247203125,
+        "p50": 1522.8334650000002,
+        "p95": 9947.36407445,
+        "p99": 10815.72522483
+      },
+      "tpot_ms": {
+        "average": 57.19844390300245,
+        "p50": 65.72573016666666,
+        "p95": 66.82945677215686,
+        "p99": 68.37715219133334
+      },
+      "total_latency_ms": {
+        "average": 18138.13444246875,
+        "p50": 17994.855864999998,
+        "p95": 26794.35610205,
+        "p99": 27677.091474499997
+      },
+      "total_prompt_tokens": 121388,
+      "total_completion_tokens": 16384,
+      "metadata": {
+        "base_url": "http://127.0.0.1:8000",
+        "model": "Qwen/Qwen2.5-0.5B-Instruct",
+        "max_tokens": 256,
+        "temperature": 0.0,
+        "prompt_source": "file:/kaggle/working/llm_inference_benchmark/prompts/long_2k_pool.jsonl",
+        "prompt_char_count": null,
+        "prompt_mode": "pool",
+        "prompt_count": 64,
+        "min_prompt_char_count": 11401,
+        "max_prompt_char_count": 11786,
+        "avg_prompt_char_count": 11637.5625,
+        "warmup_requests": 0,
+        "gpu_monitor_interval_ms": 200,
+        "benchmark_started_at": "2026-09-17T07:39:25.821152Z",
+        "benchmark_finished_at": "2026-09-17T07:40:02.425720Z",
+        "gpu": {
+          "index": 0,
+          "avg_utilization_pct": 98.68023255813954,
+          "max_utilization_pct": 100.0,
+          "avg_memory_used_mib": 10761.0,
+          "max_memory_used_mib": 10761.0,
+          "avg_temperature_c": 80.57558139534883,
+          "max_temperature_c": 83.0,
+          "avg_power_w": 64.53866279069767,
+          "max_power_w": 70.35
+        }
+      }
+    }
+  ],
+  "comparison": [
+    {
+      "concurrency": 32,
+      "request_throughput_rps": 1.7533673649345471,
+      "output_token_throughput_tps": 448.86204542324407,
+      "ttft_ms": {
+        "average": 3552.531247203125,
+        "p50": 1522.8334650000002,
+        "p95": 9947.36407445,
+        "p99": 10815.72522483
+      },
+      "tpot_ms": {
+        "average": 57.19844390300245,
+        "p50": 65.72573016666666,
+        "p95": 66.82945677215686,
+        "p99": 68.37715219133334
+      },
+      "total_latency_ms": {
+        "average": 18138.13444246875,
+        "p50": 17994.855864999998,
+        "p95": 26794.35610205,
+        "p99": 27677.091474499997
+      },
+      "avg_gpu_utilization_pct": 98.68023255813954,
+      "max_gpu_utilization_pct": 100.0,
+      "avg_memory_used_mib": 10761.0,
+      "max_memory_used_mib": 10761.0,
+      "max_temperature_c": 83.0,
+      "avg_power_w": 64.53866279069767
+    }
+  ]
+}

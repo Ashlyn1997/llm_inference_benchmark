@@ -1,0 +1,57 @@
+{
+  "count": 64,
+  "successful_requests": 64,
+  "failed_requests": 0,
+  "concurrency": 64,
+  "wall_time_s": 13.70093936900048,
+  "request_throughput_rps": 4.671212555308824,
+  "output_token_throughput_tps": 1195.830414159059,
+  "ttft_ms": {
+    "average": 446.13713626562503,
+    "p50": 455.14553850000004,
+    "p95": 672.9351855499999,
+    "p99": 687.9848579199999
+  },
+  "tpot_ms": {
+    "average": 51.251204824571076,
+    "p50": 51.25488982745098,
+    "p95": 51.52795761666666,
+    "p99": 51.54406894537255
+  },
+  "total_latency_ms": {
+    "average": 13515.19436653125,
+    "p50": 13590.328579500001,
+    "p95": 13664.696489850001,
+    "p99": 13665.27440375
+  },
+  "total_prompt_tokens": 121388,
+  "total_completion_tokens": 16384,
+  "metadata": {
+    "base_url": "http://127.0.0.1:8000",
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "max_tokens": 256,
+    "temperature": 0.0,
+    "prompt_source": "file:/kaggle/working/llm_inference_benchmark/prompts/long_2k_pool.jsonl",
+    "prompt_char_count": null,
+    "prompt_mode": "pool",
+    "prompt_count": 64,
+    "min_prompt_char_count": 11401,
+    "max_prompt_char_count": 11786,
+    "avg_prompt_char_count": 11637.5625,
+    "warmup_requests": 0,
+    "gpu_monitor_interval_ms": 200,
+    "benchmark_started_at": "2026-09-17T07:25:29.128407Z",
+    "benchmark_finished_at": "2026-09-17T07:25:42.870140Z",
+    "gpu": {
+      "index": 0,
+      "avg_utilization_pct": 98.23076923076923,
+      "max_utilization_pct": 100.0,
+      "avg_memory_used_mib": 10761.0,
+      "max_memory_used_mib": 10761.0,
+      "avg_temperature_c": 77.16923076923077,
+      "max_temperature_c": 78.0,
+      "avg_power_w": 65.79030769230769,
+      "max_power_w": 69.17
+    }
+  }
+}
