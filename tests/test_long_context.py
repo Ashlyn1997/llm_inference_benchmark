@@ -1,4 +1,5 @@
 import os
+import json
 import subprocess
 import sys
 import tempfile
@@ -131,6 +132,22 @@ class PromptFileTest(unittest.TestCase):
 
 
 class LongContextScriptTest(unittest.TestCase):
+    def test_committed_pool_has_diverse_long_prefixes(self):
+        pool_path = PROJECT_DIR / "prompts" / "long_2k_pool.jsonl"
+        records = [
+            json.loads(line)
+            for line in pool_path.read_text(encoding="utf-8").splitlines()
+        ]
+        prompts = [record["prompt"] for record in records]
+        first_500_words = {
+            " ".join(prompt.split()[:500])
+            for prompt in prompts
+        }
+
+        self.assertEqual(len(prompts), 64)
+        self.assertEqual(len(set(prompts)), 64)
+        self.assertEqual(len(first_500_words), 64)
+
     def test_script_builds_expected_default_arguments(self):
         script_path = PROJECT_DIR / "scripts" / "run_long_context_benchmark.sh"
         with tempfile.TemporaryDirectory() as directory:
@@ -165,7 +182,7 @@ class LongContextScriptTest(unittest.TestCase):
         self.assertEqual(value_after("--concurrency"), "8,16,32,64")
         self.assertEqual(value_after("--requests"), "64")
         self.assertEqual(value_after("--max-tokens"), "256")
-        self.assertEqual(value_after("--warmup-requests"), "5")
+        self.assertEqual(value_after("--warmup-requests"), "0")
         self.assertEqual(value_after("--gpu-index"), "0")
         self.assertEqual(value_after("--gpu-monitor-interval-ms"), "200")
         self.assertEqual(value_after("--output-dir"), "results/long_context")

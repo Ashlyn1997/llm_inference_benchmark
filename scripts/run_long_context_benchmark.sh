@@ -16,7 +16,7 @@ cd "${PROJECT_DIR}"
   --concurrency "${CONCURRENCIES:-8,16,32,64}" \
   --requests "${REQUESTS:-64}" \
   --max-tokens "${MAX_TOKENS:-256}" \
-  --warmup-requests "${WARMUP_REQUESTS:-5}" \
+  --warmup-requests "${WARMUP_REQUESTS:-0}" \
   --gpu-index "${GPU_INDEX:-0}" \
   --gpu-monitor-interval-ms "${GPU_MONITOR_INTERVAL_MS:-200}" \
   --output-dir "${OUTPUT_DIR:-results/long_context}" \
