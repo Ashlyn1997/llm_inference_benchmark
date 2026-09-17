@@ -83,7 +83,7 @@ python -m llm_benchmark.cli \
 
 ## Long Context / KV Cache Pressure Benchmark
 
-项目内置 [long_2k.txt](prompts/long_2k.txt)，是一份约 2k token 的英文 LLM serving 技术文本。长 prompt 会增加 prefill 计算和 KV Cache 占用，适合后续比较不同 KV Cache memory 配置、vLLM 版本或 GPU 配置。
+项目内置 [long_2k_pool.jsonl](prompts/long_2k_pool.jsonl)，包含 64 条约 2k token 的英文 LLM serving 技术 prompt。长 prompt 会增加 prefill 计算和 KV Cache 占用；不同 prompt 从不同技术主题开头，因此在不关闭 vLLM Prefix Cache 的前提下，避免相同 prompt 造成近乎 100% 的 cache hit。
 
 默认 workload 使用 concurrency `8,16,32,64`、每档 `64` 个请求、`max_tokens=256`，并在每档正式压测前执行 5 个 warmup 请求：
 
@@ -98,7 +98,7 @@ python -m llm_benchmark.cli \
 python3 -m llm_benchmark.cli \
   --base-url http://127.0.0.1:8000 \
   --model Qwen/Qwen2.5-0.5B-Instruct \
-  --prompt-file prompts/long_2k.txt \
+  --prompts-file prompts/long_2k_pool.jsonl \
   --concurrency 8,16,32,64 \
   --requests 64 \
   --max-tokens 256 \
@@ -108,4 +108,4 @@ python3 -m llm_benchmark.cli \
   --output-dir results/long_context
 ```
 
-`--prompt-file` 的内容优先于 `--prompt`，并且所有请求共享同一份文本。每个 run 的 summary metadata 会保存 `prompt_source` 和 `prompt_char_count`；本项目不估算 prompt token 数，避免引入不可靠或额外的 tokenizer 依赖。
+prompt 输入优先级为 `--prompts-file > --prompt-file > --prompt`。使用 prompt pool 时，第 `request_id` 个请求选择 `prompts[request_id % len(prompts)]`，因此 64 个测量请求会轮询整个 pool。每个 run 的 summary metadata 会保存 `prompt_source`、`prompt_mode`、`prompt_count` 和 prompt 字符数范围；request-level 结果继续保留服务返回的实际 `prompt_tokens`。本项目不估算 prompt token 数，避免引入不可靠或额外的 tokenizer 依赖。

@@ -12,7 +12,7 @@ cd "${PROJECT_DIR}"
 "${PYTHON_BIN:-python3}" -m llm_benchmark.cli \
   --base-url "${VLLM_BASE_URL:-http://127.0.0.1:8000}" \
   --model "${VLLM_MODEL:-Qwen/Qwen2.5-0.5B-Instruct}" \
-  --prompt-file "${PROMPT_FILE:-prompts/long_2k.txt}" \
+  --prompts-file "${PROMPTS_FILE:-prompts/long_2k_pool.jsonl}" \
   --concurrency "${CONCURRENCIES:-8,16,32,64}" \
   --requests "${REQUESTS:-64}" \
   --max-tokens "${MAX_TOKENS:-256}" \

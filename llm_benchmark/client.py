@@ -23,10 +23,16 @@ class BenchmarkConfig:
     timeout_s: float
     api_key: str | None = None
     system_prompt: str | None = None
+    prompts: tuple[str, ...] = ()
 
     @property
     def endpoint(self) -> str:
         return self.base_url.rstrip("/") + "/v1/chat/completions"
+
+    def prompt_for_request(self, request_id: int) -> str:
+        if self.prompts:
+            return self.prompts[request_id % len(self.prompts)]
+        return self.prompt
 
 
 def _extract_usage(payload: dict[str, Any]) -> tuple[int | None, int | None, int | None]:
@@ -63,7 +69,7 @@ async def run_request(
     messages: list[dict[str, str]] = []
     if config.system_prompt:
         messages.append({"role": "system", "content": config.system_prompt})
-    messages.append({"role": "user", "content": config.prompt})
+    messages.append({"role": "user", "content": config.prompt_for_request(request_id)})
     body = {
         "model": config.model,
         "messages": messages,

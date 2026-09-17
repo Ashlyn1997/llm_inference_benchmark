@@ -4,7 +4,7 @@ import argparse
 import asyncio
 import json
 import os
-from dataclasses import replace
+from dataclasses import dataclass, replace
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -35,18 +35,87 @@ def _utc_now() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
-def _resolve_prompt(args: argparse.Namespace) -> tuple[str, str]:
-    """Return the benchmark prompt and a stable description of its source."""
-    if args.prompt_file is None:
-        return args.prompt, "inline:--prompt"
+@dataclass(frozen=True)
+class PromptSelection:
+    prompts: tuple[str, ...]
+    mode: str
+    source: str
 
-    prompt_path = args.prompt_file.expanduser()
+
+def _read_prompt_file(prompt_path: Path) -> str:
     try:
-        return prompt_path.read_text(encoding="utf-8"), f"file:{prompt_path.resolve()}"
+        return prompt_path.read_text(encoding="utf-8")
     except FileNotFoundError as exc:
         raise ValueError(f"Prompt file does not exist: {prompt_path}") from exc
     except OSError as exc:
         raise ValueError(f"Unable to read prompt file {prompt_path}: {exc}") from exc
+
+
+def _read_prompt_pool(prompt_path: Path) -> tuple[str, ...]:
+    prompts: list[str] = []
+    try:
+        with prompt_path.open(encoding="utf-8") as file:
+            for line_number, line in enumerate(file, start=1):
+                if not line.strip():
+                    continue
+                try:
+                    item = json.loads(line)
+                except json.JSONDecodeError as exc:
+                    raise ValueError(
+                        f"Invalid JSONL in prompts file {prompt_path} at line "
+                        f"{line_number}: {exc.msg}"
+                    ) from exc
+                if not isinstance(item, dict) or not isinstance(item.get("prompt"), str):
+                    raise ValueError(
+                        f"Invalid JSONL in prompts file {prompt_path} at line "
+                        f"{line_number}: expected an object with a string 'prompt' field"
+                    )
+                if not item["prompt"].strip():
+                    raise ValueError(
+                        f"Invalid JSONL in prompts file {prompt_path} at line "
+                        f"{line_number}: prompt must not be empty"
+                    )
+                prompts.append(item["prompt"])
+    except FileNotFoundError as exc:
+        raise ValueError(f"Prompts file does not exist: {prompt_path}") from exc
+    except OSError as exc:
+        raise ValueError(f"Unable to read prompts file {prompt_path}: {exc}") from exc
+
+    if not prompts:
+        raise ValueError(f"Prompt pool is empty: {prompt_path}")
+    return tuple(prompts)
+
+
+def _resolve_prompts(args: argparse.Namespace) -> PromptSelection:
+    """Load a prompt pool, one prompt file, or the inline prompt by precedence."""
+    prompts_file = getattr(args, "prompts_file", None)
+    if prompts_file is not None:
+        prompt_path = prompts_file.expanduser()
+        return PromptSelection(
+            prompts=_read_prompt_pool(prompt_path),
+            mode="pool",
+            source=f"file:{prompt_path.resolve()}",
+        )
+
+    if args.prompt_file is None:
+        return PromptSelection(
+            prompts=(args.prompt,),
+            mode="single",
+            source="inline:--prompt",
+        )
+
+    prompt_path = args.prompt_file.expanduser()
+    return PromptSelection(
+        prompts=(_read_prompt_file(prompt_path),),
+        mode="single",
+        source=f"file:{prompt_path.resolve()}",
+    )
+
+
+def _resolve_prompt(args: argparse.Namespace) -> tuple[str, str]:
+    """Backward-compatible helper for callers that require one resolved prompt."""
+    selection = _resolve_prompts(args)
+    return selection.prompts[0], selection.source
 
 
 def _concurrencies(value: str) -> list[int]:
@@ -69,6 +138,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--prompt-file",
         type=Path,
         help="UTF-8 text file used as the prompt; overrides --prompt",
+    )
+    parser.add_argument(
+        "--prompts-file",
+        type=Path,
+        help="JSONL prompt pool; overrides --prompt-file and --prompt",
     )
     parser.add_argument("--system-prompt")
     parser.add_argument("--max-tokens", type=_positive_int, default=128)
@@ -99,7 +173,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 async def _run(args: argparse.Namespace) -> int:
-    prompt, prompt_source = _resolve_prompt(args)
+    prompt_selection = _resolve_prompts(args)
+    prompt = prompt_selection.prompts[0]
+    prompt_lengths = [len(item) for item in prompt_selection.prompts]
     summaries = []
     for concurrency in args.concurrency:
         run_dir = args.output_dir / f"concurrency_{concurrency}"
@@ -115,6 +191,7 @@ async def _run(args: argparse.Namespace) -> int:
             timeout_s=args.timeout,
             api_key=args.api_key,
             system_prompt=args.system_prompt,
+            prompts=prompt_selection.prompts,
         )
         if args.warmup_requests:
             print(
@@ -156,8 +233,15 @@ async def _run(args: argparse.Namespace) -> int:
                 "model": args.model,
                 "max_tokens": args.max_tokens,
                 "temperature": args.temperature,
-                "prompt_source": prompt_source,
-                "prompt_char_count": len(prompt),
+                "prompt_source": prompt_selection.source,
+                "prompt_char_count": (
+                    len(prompt) if prompt_selection.mode == "single" else None
+                ),
+                "prompt_mode": prompt_selection.mode,
+                "prompt_count": len(prompt_selection.prompts),
+                "min_prompt_char_count": min(prompt_lengths),
+                "max_prompt_char_count": max(prompt_lengths),
+                "avg_prompt_char_count": sum(prompt_lengths) / len(prompt_lengths),
                 "warmup_requests": args.warmup_requests,
                 "gpu_monitor_interval_ms": args.gpu_monitor_interval_ms,
                 "benchmark_started_at": benchmark_started_at,

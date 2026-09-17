@@ -37,6 +37,40 @@ class PromptFileTest(unittest.TestCase):
         self.assertEqual(prompt, "Prompt content from file.")
         self.assertEqual(source, f"file:{prompt_path.resolve()}")
 
+    def test_prompts_file_loads_jsonl_and_overrides_other_prompt_inputs(self):
+        from llm_benchmark import cli
+
+        with tempfile.TemporaryDirectory() as directory:
+            directory_path = Path(directory)
+            prompt_file = directory_path / "single.txt"
+            prompt_file.write_text("Single-file prompt.", encoding="utf-8")
+            pool_file = directory_path / "pool.jsonl"
+            pool_file.write_text(
+                '{"prompt": "Pool prompt zero."}\n'
+                '{"prompt": "Pool prompt one."}\n',
+                encoding="utf-8",
+            )
+            args = cli.build_parser().parse_args(
+                [
+                    "--model",
+                    "test-model",
+                    "--prompt",
+                    "Inline prompt should be ignored.",
+                    "--prompt-file",
+                    str(prompt_file),
+                    "--prompts-file",
+                    str(pool_file),
+                ]
+            )
+            selection = cli._resolve_prompts(args)
+
+        self.assertEqual(selection.mode, "pool")
+        self.assertEqual(
+            selection.prompts,
+            ("Pool prompt zero.", "Pool prompt one."),
+        )
+        self.assertEqual(selection.source, f"file:{pool_file.resolve()}")
+
     def test_missing_prompt_file_has_clear_error(self):
         from llm_benchmark import cli
 
@@ -48,6 +82,52 @@ class PromptFileTest(unittest.TestCase):
 
             with self.assertRaisesRegex(ValueError, "Prompt file does not exist"):
                 cli._resolve_prompt(args)
+
+    def test_invalid_jsonl_has_clear_error(self):
+        from llm_benchmark import cli
+
+        with tempfile.TemporaryDirectory() as directory:
+            pool_file = Path(directory) / "invalid.jsonl"
+            pool_file.write_text('{"prompt": "valid"}\nnot-json\n', encoding="utf-8")
+            args = cli.build_parser().parse_args(
+                ["--model", "test-model", "--prompts-file", str(pool_file)]
+            )
+
+            with self.assertRaisesRegex(ValueError, "Invalid JSONL.*line 2"):
+                cli._resolve_prompts(args)
+
+    def test_empty_prompt_pool_has_clear_error(self):
+        from llm_benchmark import cli
+
+        with tempfile.TemporaryDirectory() as directory:
+            pool_file = Path(directory) / "empty.jsonl"
+            pool_file.write_text("\n", encoding="utf-8")
+            args = cli.build_parser().parse_args(
+                ["--model", "test-model", "--prompts-file", str(pool_file)]
+            )
+
+            with self.assertRaisesRegex(ValueError, "Prompt pool is empty"):
+                cli._resolve_prompts(args)
+
+    def test_request_ids_round_robin_through_prompt_pool(self):
+        from llm_benchmark.client import BenchmarkConfig
+
+        config = BenchmarkConfig(
+            base_url="http://vllm.example",
+            model="test-model",
+            prompt="fallback",
+            prompts=("zero", "one", "two"),
+            max_tokens=8,
+            temperature=0,
+            requests=3,
+            concurrency=1,
+            timeout_s=10,
+        )
+
+        self.assertEqual(config.prompt_for_request(1), "one")
+        self.assertEqual(config.prompt_for_request(2), "two")
+        self.assertEqual(config.prompt_for_request(3), "zero")
+        self.assertEqual(config.prompt_for_request(4), "one")
 
 
 class LongContextScriptTest(unittest.TestCase):
@@ -81,7 +161,7 @@ class LongContextScriptTest(unittest.TestCase):
             return arguments[arguments.index(flag) + 1]
 
         self.assertEqual(value_after("--model"), "Qwen/Qwen2.5-0.5B-Instruct")
-        self.assertEqual(value_after("--prompt-file"), "prompts/long_2k.txt")
+        self.assertEqual(value_after("--prompts-file"), "prompts/long_2k_pool.jsonl")
         self.assertEqual(value_after("--concurrency"), "8,16,32,64")
         self.assertEqual(value_after("--requests"), "64")
         self.assertEqual(value_after("--max-tokens"), "256")
