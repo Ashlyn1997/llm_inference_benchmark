@@ -80,3 +80,32 @@ python -m llm_benchmark.cli \
 ```
 
 使用 `--warmup-requests 0` 可关闭 warmup。
+
+## Long Context / KV Cache Pressure Benchmark
+
+项目内置 [long_2k.txt](prompts/long_2k.txt)，是一份约 2k token 的英文 LLM serving 技术文本。长 prompt 会增加 prefill 计算和 KV Cache 占用，适合后续比较不同 KV Cache memory 配置、vLLM 版本或 GPU 配置。
+
+默认 workload 使用 concurrency `8,16,32,64`、每档 `64` 个请求、`max_tokens=256`，并在每档正式压测前执行 5 个 warmup 请求：
+
+```bash
+./scripts/run_long_context_benchmark.sh \
+  --base-url http://127.0.0.1:8000
+```
+
+也可以直接调用 CLI：
+
+```bash
+python3 -m llm_benchmark.cli \
+  --base-url http://127.0.0.1:8000 \
+  --model Qwen/Qwen2.5-0.5B-Instruct \
+  --prompt-file prompts/long_2k.txt \
+  --concurrency 8,16,32,64 \
+  --requests 64 \
+  --max-tokens 256 \
+  --warmup-requests 5 \
+  --gpu-index 0 \
+  --gpu-monitor-interval-ms 200 \
+  --output-dir results/long_context
+```
+
+`--prompt-file` 的内容优先于 `--prompt`，并且所有请求共享同一份文本。每个 run 的 summary metadata 会保存 `prompt_source` 和 `prompt_char_count`；本项目不估算 prompt token 数，避免引入不可靠或额外的 tokenizer 依赖。

@@ -131,6 +131,7 @@ class CLIGPUMonitorTest(unittest.TestCase):
             model="test-model",
             api_key=None,
             prompt="hello",
+            prompt_file=None,
             system_prompt=None,
             max_tokens=8,
             temperature=0,

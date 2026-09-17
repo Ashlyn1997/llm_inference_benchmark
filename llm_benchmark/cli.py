@@ -35,6 +35,20 @@ def _utc_now() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
+def _resolve_prompt(args: argparse.Namespace) -> tuple[str, str]:
+    """Return the benchmark prompt and a stable description of its source."""
+    if args.prompt_file is None:
+        return args.prompt, "inline:--prompt"
+
+    prompt_path = args.prompt_file.expanduser()
+    try:
+        return prompt_path.read_text(encoding="utf-8"), f"file:{prompt_path.resolve()}"
+    except FileNotFoundError as exc:
+        raise ValueError(f"Prompt file does not exist: {prompt_path}") from exc
+    except OSError as exc:
+        raise ValueError(f"Unable to read prompt file {prompt_path}: {exc}") from exc
+
+
 def _concurrencies(value: str) -> list[int]:
     try:
         values = [int(item.strip()) for item in value.split(",") if item.strip()]
@@ -51,6 +65,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--model", default=os.getenv("VLLM_MODEL", "") , required=not bool(os.getenv("VLLM_MODEL")))
     parser.add_argument("--api-key", default=os.getenv("VLLM_API_KEY"))
     parser.add_argument("--prompt", default="Explain what vLLM is in one short paragraph.")
+    parser.add_argument(
+        "--prompt-file",
+        type=Path,
+        help="UTF-8 text file used as the prompt; overrides --prompt",
+    )
     parser.add_argument("--system-prompt")
     parser.add_argument("--max-tokens", type=_positive_int, default=128)
     parser.add_argument("--temperature", type=float, default=0.0)
@@ -80,6 +99,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 async def _run(args: argparse.Namespace) -> int:
+    prompt, prompt_source = _resolve_prompt(args)
     summaries = []
     for concurrency in args.concurrency:
         run_dir = args.output_dir / f"concurrency_{concurrency}"
@@ -87,7 +107,7 @@ async def _run(args: argparse.Namespace) -> int:
         config = BenchmarkConfig(
             base_url=args.base_url,
             model=args.model,
-            prompt=args.prompt,
+            prompt=prompt,
             max_tokens=args.max_tokens,
             temperature=args.temperature,
             requests=args.requests,
@@ -136,6 +156,8 @@ async def _run(args: argparse.Namespace) -> int:
                 "model": args.model,
                 "max_tokens": args.max_tokens,
                 "temperature": args.temperature,
+                "prompt_source": prompt_source,
+                "prompt_char_count": len(prompt),
                 "warmup_requests": args.warmup_requests,
                 "gpu_monitor_interval_ms": args.gpu_monitor_interval_ms,
                 "benchmark_started_at": benchmark_started_at,
@@ -152,9 +174,12 @@ async def _run(args: argparse.Namespace) -> int:
 
 
 def main() -> None:
-    args = build_parser().parse_args()
+    parser = build_parser()
+    args = parser.parse_args()
     try:
         raise SystemExit(asyncio.run(_run(args)))
+    except ValueError as exc:
+        parser.error(str(exc))
     except KeyboardInterrupt:
         raise SystemExit(130) from None
 
