@@ -138,6 +138,30 @@ python scripts/plot_results.py \
 
 所有折线只使用结果中真实存在的 concurrency 作为横轴刻度，并以 marker 标出实际测量点。图片以 180 DPI 输出，可直接用于 README 或实验报告。
 
+### KV Cache Experiment Visualization
+
+KV Cache 实验允许同一个 concurrency 对应多个 KV Cache size，因此使用独立脚本 `plot_kv_cache_results.py`。脚本从 `kv4g_c32` 这类目录名解析 KV Cache 容量和 concurrency，并按 KV Cache size 自动排序：
+
+```bash
+python scripts/plot_kv_cache_results.py \
+  results/kv4g_c32 \
+  results/kv4g_c64 \
+  results/kv2g_c32 \
+  results/kv2g_c64 \
+  results/kv1g_c32 \
+  results/kv1g_c64 \
+  --output-dir results/kv_plots
+```
+
+输出图片：
+
+- `kv_cache_vs_throughput.png`：KV Cache size 与 output token throughput。
+- `kv_cache_vs_ttft.png`：KV Cache size 与 Average TTFT，单位为秒。
+- `kv_cache_vs_e2e_latency.png`：KV Cache size 与 Average E2E Latency，单位为秒。
+- `kv_cache_vs_gpu_memory.png`：KV Cache size 与 Average GPU Memory Used，单位为 MiB。
+
+每张图按 concurrency 分为独立折线，默认实验会显示 `Concurrency 32` 和 `Concurrency 64`。X 轴只显示结果中真实存在的 KV Cache 档位，例如 `1, 2, 4` GiB。
+
 ## Kaggle vLLM 实验续跑操作手册
 
 用途：下次重新开启 Kaggle Session 后，继续 `llm_inference_benchmark` 的 KV Cache 压力实验。
