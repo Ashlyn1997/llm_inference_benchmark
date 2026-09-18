@@ -110,6 +110,34 @@ python3 -m llm_benchmark.cli \
 
 prompt 输入优先级为 `--prompts-file > --prompt-file > --prompt`。使用 prompt pool 时，第 `request_id` 个请求选择 `prompts[request_id % len(prompts)]`，因此 64 个测量请求会轮询整个 pool。Long-context KV Cache pressure experiment intentionally uses diverse prefixes and `warmup=0` to reduce prefix-cache reuse. 每个 run 的 summary metadata 会保存 `prompt_source`、`prompt_mode`、`prompt_count` 和 prompt 字符数范围；request-level 结果继续保留服务返回的实际 `prompt_tokens`。本项目不估算 prompt token 数，避免引入不可靠或额外的 tokenizer 依赖。
 
+## Visualization
+
+安装包含 matplotlib 的项目依赖：
+
+```bash
+pip install -r requirements.txt
+```
+
+将一个或多个 benchmark 结果目录传给绘图脚本。每个目录必须包含 `combined_summary.json`，输入顺序可以任意，脚本会按 concurrency 自动排序：
+
+```bash
+python scripts/plot_results.py \
+  results/long_clean_c8 \
+  results/long_clean_c16 \
+  results/long_clean_c32 \
+  results/long_clean_c64 \
+  --output-dir results/plots
+```
+
+至少生成以下图片：
+
+- `concurrency_vs_throughput.png`：concurrency 与 output token throughput。
+- `concurrency_vs_latency.png`：Average TTFT 和 Average E2E Latency，统一使用秒。
+- `concurrency_vs_tpot.png`：concurrency 与 Average TPOT。
+- `concurrency_vs_gpu_utilization.png`：存在 GPU utilization 数据时额外生成。
+
+所有折线只使用结果中真实存在的 concurrency 作为横轴刻度，并以 marker 标出实际测量点。图片以 180 DPI 输出，可直接用于 README 或实验报告。
+
 ## Kaggle vLLM 实验续跑操作手册
 
 用途：下次重新开启 Kaggle Session 后，继续 `llm_inference_benchmark` 的 KV Cache 压力实验。
