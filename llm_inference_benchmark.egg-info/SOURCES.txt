@@ -18,3 +18,4 @@ tests/test_client.py
 tests/test_gpu_monitor.py
 tests/test_long_context.py
 tests/test_metrics.py
+tests/test_plot_results.py
