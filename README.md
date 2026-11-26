@@ -2,6 +2,8 @@
 
 用于远程 OpenAI-compatible vLLM 服务的异步并发性能 benchmark client。本项目只在本地发 HTTP 请求，不需要本地 GPU。
 
+完整的实验演进、异常分析、结果图和面试准备见 [vLLM 长上下文与 KV Cache 压力实验报告](reports/KV_CACHE_BENCHMARK_REPORT.md)。
+
 ## 特性
 
 - 使用 `httpx.AsyncClient` 并发调用 `/v1/chat/completions`
